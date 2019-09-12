@@ -1,6 +1,18 @@
 # Author: Jahnoah Simpson
 # Version: 1.0
 
+# Converts the letters in a number base 11 or higher into decimal values
+# [A = 10], [B = 11], [...], [Z = 35]
+def affixNumbers(value):
+    numberVal = ord(str(value).upper()) - ord('A') + 10
+    return numberVal
+
+# Converts all digits with values greater than nine into letters
+# [10 = A], [11 = B], [...], [35 = Z]
+def affixLetters(value):
+    unicodeVal = value + ord('A') - 10
+    return chr(unicodeVal)
+
 def toDecimal(num, numBase):
     decimalNum = 0
     placeValue = 0
