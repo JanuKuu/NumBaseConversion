@@ -3,12 +3,10 @@
 
 def toDecimal(num, numBase):
     decimalNum = 0
-    placeValue = 0
     reverseDigits = list(num)[::-1]
 
-    for digit in reverseDigits:
+    for placeValue, digit in enumerate(reverseDigits):
         decimalNum += eval(digit) * eval(numBase) ** placeValue
-        placeValue += 1
 
     return decimalNum
 
