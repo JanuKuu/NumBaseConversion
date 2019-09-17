@@ -4,7 +4,7 @@
 # Converts the letters in a number base 11 or higher into decimal values
 # [A = 10], [B = 11], [...], [Z = 35]
 def affixNumbers(value):
-    uniValue = ord(str(value).upper())
+    uniValue = ord(value.upper())
     if(uniValue >= 48 and uniValue <= 57):
         return int(value)
     elif(uniValue >=  65 and uniValue <= 90):
@@ -25,7 +25,7 @@ def toDecimal(num, numBase):
     reverseDigits = list(num)[::-1]
 
     for placeValue, digit in enumerate(reverseDigits):
-        decimalNum += eval(digit) * eval(numBase) ** placeValue
+        decimalNum += affixNumbers(digit) * int(numBase) ** placeValue
 
     return decimalNum
 
