@@ -35,10 +35,10 @@ def main():
 
     print("Your number [", num, "] in decimal is: ", toDecimal(num, base))
 
-    if(input("\nConvert another number? ('y' or 'n'): ") == 'y'):
+    if(input("\nConvert another number? (y or n): ") == 'y'):
         main()
     else:
         print("Stopping program now. Thank you!")
 
-print("Starting non-decimal number to decimal converter...\n")
+print("Starting number base to decimal converter...\n")
 main()
