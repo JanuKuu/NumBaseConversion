@@ -29,6 +29,16 @@ def toDecimal(num, numBase):
 
     return decimalNum
 
+def toNewBase(num, base, newBase):
+    newNum = ""
+    remainder = toDecimal(num, base)
+
+    while(remainder > 0):
+        remainder, newDigit = divmod(remainder, int(newBase))
+        newNum = affixLetters(newDigit) + newNum
+    
+    return newNum
+
 def main():
     num = input("Enter the number you wish to convert: ")
     base = input("Enter the base of your number: ")
