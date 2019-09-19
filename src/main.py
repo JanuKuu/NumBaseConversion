@@ -1,5 +1,6 @@
 # Author: Jahnoah Simpson
-# Version: 1.0
+# A program to convert any base number to decimal
+# Version: 1.1 (letters supported; decimal conversions only)
 
 # Converts the letters in a number base 11 or higher into decimal values
 # [A = 10], [B = 11], [...], [Z = 35]
