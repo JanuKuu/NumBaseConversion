@@ -42,8 +42,9 @@ def toNewBase(num, base, newBase):
 def main():
     num = input("Enter the number you wish to convert: ")
     base = input("Enter the base of your number: ")
+    newBase = input("Enter the base you wish to convert to: ")
 
-    print("Your number [", num, "] in decimal is: ", toDecimal(num, base))
+    print("Your number [", num, "] in base", newBase, "is: ", toNewBase(num, base, newBase))
 
     if(input("\nConvert another number? (y or n): ") == 'y'):
         main()
