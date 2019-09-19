@@ -44,8 +44,9 @@ def main():
     num = input("Enter the number you wish to convert: ")
     base = input("Enter the base of your number: ")
     newBase = input("Enter the base you wish to convert to: ")
+    SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉") # Didn't know subscript was a thing. Thanks Stackoverflow! 
 
-    print("Your number [", num, "] in base", newBase, "is: ", toNewBase(num, base, newBase))
+    print("Your number [" + num.upper() + base.translate(SUB) + "] in base", newBase, "is:", toNewBase(num, base, newBase))
 
     if(input("\nConvert another number? (y or n): ") == 'y'):
         main()
