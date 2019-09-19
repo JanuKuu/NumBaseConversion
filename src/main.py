@@ -1,5 +1,6 @@
 # Author: Jahnoah Simpson
-# Version: 1.0
+# A program to convert the base of any number
+# Version: 2.0 (non-decimal conversion support)
 
 # Converts the letters in a number base 11 or higher into decimal values
 # [A = 10], [B = 11], [...], [Z = 35]
@@ -51,5 +52,5 @@ def main():
     else:
         print("Stopping program now. Thank you!")
 
-print("Starting number base to decimal converter...\n")
+print("Starting number base converter...\n")
 main()
