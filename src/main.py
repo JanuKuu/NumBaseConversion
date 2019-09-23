@@ -1,6 +1,6 @@
 # Author: Jahnoah Simpson
-# A program to convert any base number to decimal
-# Version: 1.1 (letters supported; decimal conversions only)
+# A program to convert the base of any number
+# Version: 2.0 (non-decimal conversion support)
 
 # Converts the letters in a number base 11 or higher into decimal values
 # [A = 10], [B = 11], [...], [Z = 35]
@@ -30,16 +30,28 @@ def toDecimal(num, numBase):
 
     return decimalNum
 
+def toNewBase(num, base, newBase):
+    newNum = ""
+    remainder = toDecimal(num, base)
+
+    while(remainder > 0):
+        remainder, newDigit = divmod(remainder, int(newBase))
+        newNum = affixLetters(newDigit) + newNum
+    
+    return newNum
+
 def main():
     num = input("Enter the number you wish to convert: ")
     base = input("Enter the base of your number: ")
+    newBase = input("Enter the base you wish to convert to: ")
+    SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉") # Didn't know subscript was a thing. Thanks Stackoverflow! 
 
-    print("Your number [", num, "] in decimal is: ", toDecimal(num, base))
+    print("Your number [" + num.upper() + base.translate(SUB) + "] in base", newBase, "is:", toNewBase(num, base, newBase))
 
-    if(input("\nConvert another number? ('y' or 'n'): ") == 'y'):
+    if(input("\nConvert another number? (y or n): ") == 'y'):
         main()
     else:
         print("Stopping program now. Thank you!")
 
-print("Starting non-decimal number to decimal converter...\n")
+print("Starting number base converter...\n")
 main()
