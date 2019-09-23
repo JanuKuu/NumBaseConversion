@@ -10,8 +10,6 @@ def affixNumbers(value):
         return int(value)
     elif(uniValue >=  65 and uniValue <= 90):
         return int(uniValue - ord('A') + 10)
-    else:
-        print("Invalid input detected... Please try again.")
 
 # Converts all digits with values greater than nine into letters
 # [10 = A], [11 = B], [...], [35 = Z]
@@ -39,6 +37,21 @@ def toNewBase(num, base, newBase):
         newNum = affixLetters(newDigit) + newNum
     
     return newNum
+
+def checkErrors(num, base, newBase):
+    if(str(num).isalnum and str(base).isnumeric and str(newBase).isnumeric):
+        if(int(newBase) < 37):
+            for digit in num:
+                if(int(base) - affixNumbers(digit) < 1):
+                    print("Digit values can not be higher than base. Please try again...")
+                    return False
+            return True
+        else:
+            print("Bases higher than 36 not supported. Please try again...")
+            return False
+    else:
+        print("Invalid input detected. Please try again...")
+        return False
 
 def main():
     num = input("Enter the number you wish to convert: ")
