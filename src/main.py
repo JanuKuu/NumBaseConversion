@@ -10,8 +10,6 @@ def affixNumbers(value):
         return int(value)
     elif(uniValue >=  65 and uniValue <= 90):
         return int(uniValue - ord('A') + 10)
-    else:
-        print("Invalid input detected... Please try again.")
 
 # Converts all digits with values greater than nine into letters
 # [10 = A], [11 = B], [...], [35 = Z]
@@ -40,18 +38,37 @@ def toNewBase(num, base, newBase):
     
     return newNum
 
+def checkErrors(num, base, newBase):
+    if(num.isalnum() and base.isnumeric() and newBase.isnumeric()):
+        if(int(newBase) < 37):
+            for digit in num:
+                if(int(base) - affixNumbers(digit) < 1):
+                    print("\nDigit values can not be higher than base. Please try again...")
+                    return False
+            return True
+        else:
+            print("\nCan not convert to numbers above base 36. Please try again...")
+            return False
+    else:
+        print("\nInvalid input detected. Please try again...")
+        return False
+
 def main():
     num = input("Enter the number you wish to convert: ")
     base = input("Enter the base of your number: ")
     newBase = input("Enter the base you wish to convert to: ")
     SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉") # Didn't know subscript was a thing. Thanks Stackoverflow! 
 
-    print("Your number [" + num.upper() + base.translate(SUB) + "] in base", newBase, "is:", toNewBase(num, base, newBase))
+    if(checkErrors(num, base, newBase)):
+        print("Your number [" + num.upper() + base.translate(SUB) + "] in base", newBase, "is:", toNewBase(num, base, newBase))
 
-    if(input("\nConvert another number? (y or n): ") == 'y'):
-        main()
+        if(input("\nConvert another number? (y or n): ") == 'y'):
+            main()
+        else:
+            print("Stopping program now. Thank you!")
+            exit()
     else:
-        print("Stopping program now. Thank you!")
+        main()
 
 print("Starting number base converter...\n")
 main()
