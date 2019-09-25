@@ -39,7 +39,7 @@ def toNewBase(num, base, newBase):
     return newNum
 
 def checkErrors(num, base, newBase):
-    if(str(num).isalnum and str(base).isnumeric and str(newBase).isnumeric):
+    if(num.isalnum() and base.isnumeric() and newBase.isnumeric()):
         if(int(newBase) < 37):
             for digit in num:
                 if(int(base) - affixNumbers(digit) < 1):
