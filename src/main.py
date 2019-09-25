@@ -43,14 +43,14 @@ def checkErrors(num, base, newBase):
         if(int(newBase) < 37):
             for digit in num:
                 if(int(base) - affixNumbers(digit) < 1):
-                    print("Digit values can not be higher than base. Please try again...")
+                    print("\nDigit values can not be higher than base. Please try again...")
                     return False
             return True
         else:
-            print("Bases higher than 36 not supported. Please try again...")
+            print("\nCan not convert to numbers above base 36. Please try again...")
             return False
     else:
-        print("Invalid input detected. Please try again...")
+        print("\nInvalid input detected. Please try again...")
         return False
 
 def main():
@@ -59,12 +59,16 @@ def main():
     newBase = input("Enter the base you wish to convert to: ")
     SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉") # Didn't know subscript was a thing. Thanks Stackoverflow! 
 
-    print("Your number [" + num.upper() + base.translate(SUB) + "] in base", newBase, "is:", toNewBase(num, base, newBase))
+    if(checkErrors(num, base, newBase)):
+        print("Your number [" + num.upper() + base.translate(SUB) + "] in base", newBase, "is:", toNewBase(num, base, newBase))
 
-    if(input("\nConvert another number? (y or n): ") == 'y'):
-        main()
+        if(input("\nConvert another number? (y or n): ") == 'y'):
+            main()
+        else:
+            print("Stopping program now. Thank you!")
+            exit()
     else:
-        print("Stopping program now. Thank you!")
+        main()
 
 print("Starting number base converter...\n")
 main()
